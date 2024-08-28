@@ -1,5 +1,10 @@
-export function incart(element,productid){
-    let isincart=element.some(({_id})=>element.length>0&&_id===productid);
-    return isincart;
- 
- }
+export const findProductInCart = (cart, prodId) => {
+    const isProductInCart =
+      cart && cart.length > 0 && cart.some(({ _id }) => _id === prodId);
+    return isProductInCart;
+  };
+  export const findProductInFavorite=(favorite,prodId)=>{
+    const isProductInFav =
+    favorite && favorite.length > 0 && favorite.some(({ _id }) => _id === prodId);
+  return isProductInFav;
+  }
