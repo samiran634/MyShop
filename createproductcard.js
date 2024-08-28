@@ -1,6 +1,6 @@
  
 
-export const createcard=(productcontainer,products,isincart,texttype)=>{
+export const createcard=(productcontainer,products,findProductInCart,findProductInFavorite,texttype)=>{
 for(let item of products){
  //cardstrature   
    const cardcontainer= document.createElement('div');
@@ -30,8 +30,15 @@ for(let item of products){
    cardcontainer.appendChild(imgcontainer);
    let buttonelement=document.createElement("button");
    buttonelement.classList.add("badge-close", "cursor", "absolute");
+   buttonelement.setAttribute("id","fav-btn")
    let spanele=document.createElement("span");
-   spanele.innerText="favorite"
+   let wishListItem=JSON.parse(localStorage.getItem("favorite"))
+   let isinwishlist=findProductInFavorite(wishListItem,item._id);
+   spanele.innerText=texttype  === "favorite"
+   ? "cancel"
+   : texttype === "products" && isinwishlist
+   ? "task_alt"
+   : "favorite";
    spanele.setAttribute("data-id",item._id);
    spanele.classList.add("material-symbols-outlined")
    buttonelement.appendChild(spanele);
@@ -76,11 +83,16 @@ cartcontainer.classList.add("cta-btn");
 let cartbutton=document.createElement("button");
 cartbutton.classList.add("button", "btn-primary",  "cart-btn","d-flex",   "align-center", "justify-center", "gap", "cursor", "btn-margin");
 cartbutton.setAttribute("data-key",item._id);
+const isincart=findProductInCart(JSON.parse(localStorage.getItem("cart")),item._id);
+const isinfav=findProductInFavorite(JSON.parse(localStorage.getItem("favorite")),item._id)
+ 
+ 
 cartbutton.innerText=texttype  === "cart"
 ? "Remove"
-: texttype === "products" && isincart
+: (texttype === "products"&&isincart)||(isincart&&(texttype==="favorite")  )
 ? "Go To Cart"
 : "Add To Cart";
+cartbutton.setAttribute("data-name",cartbutton.innerText);
 let sopeingicon=document.createElement("span");
 sopeingicon.classList.add("material-symbols-outlined");
 sopeingicon.setAttribute("data-key",item._id)
