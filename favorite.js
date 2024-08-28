@@ -21,7 +21,10 @@ wishlistcontainer.addEventListener("click",(event)=>{
     //to add items in favorite
     let isProductInCart=findProductInCart( tocart,event.target.dataset.key);
     if(isProductInCart){
-    location.href="/cart.html";
+   
+    }
+     if(event.target.dataset.name==="Go To Cart"){
+        location.href="/cart.html";
     }
     createcard(wishlistcontainer,wishListItem,findProductInCart,findProductInFavorite,"favorite");
 
