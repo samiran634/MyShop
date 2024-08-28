@@ -30,17 +30,17 @@ cartcontainer.addEventListener("click", (event) => {
       }
       if(cnt<0)cnt=1;
       JSON.stringify(localStorage.setItem(event.target.dataset.key,cnt));
+    let isProductInFav=findProductInFavorite(wishListItem,event.target.dataset.key);
      
-      if(event.target.dataset.name==="save-btn" ){
+      if(event.target.dataset.name==="Save To Wishlist" ){
         const producttoaddtofavorite=products.filter(({_id})=>_id===event.target.dataset.key);
          wishListItem=[...wishListItem ,...producttoaddtofavorite];
       localStorage.setItem(`favorite`,JSON.stringify(wishListItem));
       
-      let isProductInFav=findProductInFavorite(wishListItem,event.target.dataset.key);
-      if(isProductInFav){
-location.href="/favorite.html";
-      }
+      
+ 
     }
+    else if(event.target.dataset.name==="Save To Wishlist" ) location.href="/favorite.html";
       
        
       createHorizontalProductCard(cart,cartcontainer,findProductInFavorite);
@@ -86,6 +86,11 @@ totalAmount.innerText = priceAfterDiscount - discountedAmount + 100;
  mainInCart.addEventListener("click",(event)=>{
   location.href="/placeorder.html"
  })
+ let bigcontainer=document.querySelector(".ele");
+ if(cart.length===0){
+  cartcontainer.setAttribute("style","display:hidden;");
+  bigcontainer.setAttribute("style","justify-content:center;");
+ }
 createHorizontalProductCard(cart,cartcontainer,findProductInFavorite);
  
  
