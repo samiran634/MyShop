@@ -27,7 +27,43 @@
             </ul>
         </nav>
     </header>
-    <div class="cart products-page d-flex wrap gap"></div>
+    <h2 class="heading-2 d-flex justify-center" style="padding-top: 6rem;">Your Cart</h2>
+    <div class="ele justify-space-between " style="display:flex; flex-direction: row; position: relative;" >
+    
+    <main class="justify-space-between" style="display: flex;">
+   
+        <main class="main  d-flex gap justify-center" >
+            <div class=" d-flex direction-column wrap gap" id="cart"></div>
+            <div class="final-price d-flex direction-column gap shadow padding-all-16">
+                <div>Price Details</div>
+                <div class="d-flex align-center justify-space-between">
+                    <span>Price (<span class="item-count"></span>) items</span>
+                    <span>Rs. <span class="product-price"></span></span>
+                </div>
+                <div class="d-flex align-center justify-space-between">
+                    <span>Discount</span>
+                    <span>Rs. <span class="discounted-amount"></span></span>
+                </div>
+                <div class="d-flex align-center justify-space-between">
+                    <span>Delivery Charge</span>
+                    <span>Rs. 100</span>
+                </div>
+                <div class="d-flex align-center justify-space-between">
+                    <span>Total Amount</span>
+                    <span>Rs. <span class="total-amount"></span></span>
+                </div>
+                <div>
+                    You will save Rs. <span class="discounted-amount"></span> on this order
+                </div>
+                <button class="button btn-primary cursor" id="placeOrder">
+                    Place Order
+                </button>
+            </div>
+        </main>
+        <div class="products-page cart d-flex wrap gap" style=" position: relative;padding: 0em;margin-left: 1.25rem;" ></div>
+    </div>
+        
+    </main>
 <script type="module" src="cart.js"></script>
 </body>
 </html>
