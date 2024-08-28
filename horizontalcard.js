@@ -124,7 +124,7 @@ export const createHorizontalProductCard = (products, parentElement,isinfav) => 
       let wishListItem=JSON.parse(localStorage.getItem("favorite"))||[];
       let item=isinfav(wishListItem,product._id)
       saveBtn.innerText =item===true? "Go To Wishlist":"Save To Wishlist";
-      saveBtn.setAttribute("data-name","save-btn");
+      saveBtn.setAttribute("data-name",saveBtn.innerText);
       saveBtn.setAttribute("data-key",product._id);
       ctaButton.appendChild(removeBtn);
       ctaButton.appendChild(saveBtn);
