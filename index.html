@@ -23,7 +23,7 @@
             <ul class="list-non-bullet">
              
                 <li class="list-item-inline">
-                    <a href="#" class="link cursor"><span class="material-symbols-outlined">
+                    <a href="/favorite.html" class="link cursor"><span class="material-symbols-outlined">
                         favorite
                         </span></a>
                 </li>
@@ -36,7 +36,32 @@
         </nav>
     </header>
 
-    <div  id="product" class="products-page d-flex wrap gap  "></div>
+    <div class="products-page d-flex" style="display: flex; flex-direction: row;">
+    <aside class="side-bar">
+        <h3 class="heading-3">Filter</h3>
+        <div class="filter-container">
+            <h3 class="heading-3">Ratings</h3>
+            <div class="d-flex align-center gap">
+                <input data-rating="4" id="rating-4" class="radio" type="radio" name="rating">
+                <label data-rating="4" for="rating-4" class="label">4 stars & above</label>
+            </div>
+            <div class="d-flex align-center gap">
+                <input data-rating="3" id="rating-3" class="radio" type="radio" name="rating">
+                <label data-rating="3" for="rating-3" class="label">3 stars & above</label>
+            </div>
+            <div class="d-flex align-center gap">
+                <input data-rating="2" id="rating-2" class="radio" type="radio" name="rating">
+                <label data-rating="2" for="rating-2" class="label">2 stars & above</label>
+            </div>
+            <div class="d-flex align-center gap">
+                <input data-rating="1" id="rating-1" class="radio" type="radio" name="rating">
+                <label data-rating="1" for="rating-1" class="label">1 stars & above</label>
+            </div>
+        </div>
+    </aside>
+    <div  id="product" class="  d-flex wrap gap "style="margin-left:16rem;padding: 0em;"></div>
+    </div>
+ 
      
    <script  type="module" src="./main.js"></script>
 </body>
