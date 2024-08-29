@@ -40,7 +40,7 @@ cartcontainer.addEventListener("click", (event) => {
       
  
     }
-    else if(event.target.dataset.name==="Save To Wishlist" ) location.href="/favorite.html";
+    else if(event.target.dataset.name==="Go To Wishlist" ) location.href="/favorite.html";
       
        
       createHorizontalProductCard(cart,cartcontainer,findProductInFavorite);
@@ -62,15 +62,26 @@ cartLength.innerText =   quantity;
  
 const productPrice = document.querySelector(".product-price");
 const priceAfterDiscount = JSON.parse(localStorage.getItem("cart")).reduce(
-  (acc, cur) => acc + cur.newPrice,
+  (acc, cur) => {
+    let quantity=JSON.parse(localStorage.getItem(`${cur._id}`));
+  acc+= acc +( quantity*cur.newPrice)
+   return acc;
+  
+  },
   0
 );
+console.log(priceAfterDiscount);
 productPrice.innerText = priceAfterDiscount;
 
 const discount = document.querySelectorAll(".discounted-amount");
 
 const priceBeforeDiscount = JSON.parse(localStorage.getItem("cart")).reduce(
-  (acc, cur) => acc + cur.oldPrice,
+  
+  (acc, cur) =>{
+    let quantity=JSON.parse(localStorage.getItem( `${cur._id}`));
+ acc+= acc +quantity* cur.oldPrice;
+return acc;
+  },
   0
 );
 
@@ -90,8 +101,9 @@ totalAmount.innerText = priceAfterDiscount - discountedAmount + 100;
  if(cart.length===0){
   cartcontainer.setAttribute("style","display:hidden;");
   bigcontainer.setAttribute("style","justify-content:center;");
- }
-createHorizontalProductCard(cart,cartcontainer,findProductInFavorite);
+  createHorizontalProductCard(cart,cartcontainer,findProductInFavorite); 
  
+ }
+createHorizontalProductCard(cart,cartcontainer,findProductInFavorite); 
  
  
