@@ -3,9 +3,15 @@ import { products } from "./product.js";
 import { createcard }from "../createproductcard.js";
 let wishListItem=JSON.parse(localStorage.getItem("favorite"))||[];
 console.log(wishListItem);
+
 let tocart=JSON.parse(localStorage.getItem("cart"))||[];
 let wishlistcontainer=document.querySelector(".favorite")
- 
+if(wishListItem.length===0){
+    wishlistcontainer.classList.remove("d-flex");
+
+    console.log("yes")
+    wishlistcontainer.innerHTML=' <div class="favorite products-page d-flex" style="  justify-content: center;justify-content: center;align-self: center;font-size: 5em;opacity: 35%;font-family: sans-serif;">No Product To Show</div> '
+}
 wishlistcontainer.addEventListener("click",(event)=>{
     console.log(event.target.dataset);
     
