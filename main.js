@@ -46,8 +46,40 @@ productcontainer.innerHTML="";
 createcard(productcontainer,filteredproducts,findProductInCart,findProductInFavorite,"products")
 
    })
-  
-   createcard(productcontainer,products,findProductInCart,findProductInFavorite,"products");
  
+   createcard(productcontainer,products,findProductInCart,findProductInFavorite,"products");
+   let searchString;
+ //debounce function
+const debunce_handler=debounce(callback ,1000);
+   let input_box=document.getElementById("input-box");
+   console.log(input_box);
+   function callback(ele){
+    let arrOfsearchedprosucts=[];
+    searchString=ele.target.value
+ for(let ele of products){
+  console.log(ele);
+  if(ele.name.toLowerCase().startsWith(searchString)||ele.brand.toLowerCase().startsWith(searchString)){
+    productcontainer.innerHTML="";
+ arrOfsearchedprosucts.push(ele);
+ productcontainer.innerHTML="";
+createcard(productcontainer,arrOfsearchedprosucts,findProductInCart,findProductInFavorite,"products")
+  }
+ }
+   }
+   input_box.addEventListener("keyup",debunce_handler)
+   function debounce(callback,delay){
+    let timerid;
+    return function(...args){
+      clearInterval(timerid);
+    
+    timerid=setTimeout(()=>{
+      callback(...args)
+
+      },delay)
+    }
+  }
+ 
+
+   
     
 
