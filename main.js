@@ -56,14 +56,22 @@ const debunce_handler=debounce(callback ,1000);
    function callback(ele){
     let arrOfsearchedprosucts=[];
     searchString=ele.target.value
+    let flag=0;
  for(let ele of products){
-  console.log(ele);
+  console.log(ele.name.toLowerCase().startsWith(searchString)||ele.brand.toLowerCase().startsWith(searchString));
   if(ele.name.toLowerCase().startsWith(searchString)||ele.brand.toLowerCase().startsWith(searchString)){
     productcontainer.innerHTML="";
  arrOfsearchedprosucts.push(ele);
  productcontainer.innerHTML="";
 createcard(productcontainer,arrOfsearchedprosucts,findProductInCart,findProductInFavorite,"products")
+flag=1;
   }
+ 
+ }
+ console.log(flag)
+ if(flag===0){
+   productcontainer.innerHTML=""
+  productcontainer.innerHTML=`<div class="favorite products-page d-flex" style="  justify-content: center;justify-content: center;align-self: center;font-size: 5em;opacity: 35%;font-family: sans-serif;">No Product To Show</div>`
  }
    }
    input_box.addEventListener("keyup",debunce_handler)
