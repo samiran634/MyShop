@@ -38,3 +38,42 @@ wishlistcontainer.addEventListener("click",(event)=>{
 
 
 createcard(wishlistcontainer,wishListItem,findProductInCart,findProductInFavorite,"favorite");
+let searchString;
+//debounce function
+const debunce_handler=debounce(callback ,1000);
+  let input_box=document.querySelector(".input-box");
+  console.log(input_box);
+  function callback(ele){
+   let arrOfsearchedprosucts=[];
+   searchString=ele.target.value
+   let flag=0;
+for(let ele of wishListItem){
+ console.log(ele.name.toLowerCase().startsWith(searchString)||ele.brand.toLowerCase().startsWith(searchString));
+ if(ele.name.toLowerCase().startsWith(searchString)||ele.brand.toLowerCase().startsWith(searchString)){
+    wishlistcontainer.innerHTML="";
+arrOfsearchedprosucts.push(ele);
+wishlistcontainer.innerHTML="";
+createcard(wishlistcontainer,arrOfsearchedprosucts,findProductInCart,findProductInFavorite,"products")
+flag=1;
+ }
+
+}
+console.log(flag)
+if(flag===0){
+    wishlistcontainer.innerHTML=""
+    wishlistcontainer.innerHTML=`<div class="favorite products-page d-flex" style="  justify-content: center;justify-content: center;align-self: center;font-size: 5em;opacity: 35%;font-family: sans-serif;">No Product To Show</div>`
+}
+  }
+  input_box.addEventListener("keyup",debunce_handler)
+  function debounce(callback,delay){
+   let timerid;
+   return function(...args){
+     clearInterval(timerid);
+   
+   timerid=setTimeout(()=>{
+     callback(...args)
+
+     },delay)
+   }
+ }
+
