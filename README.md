@@ -1,1 +1,1 @@
-This is just a demo E-commarce website to my js knowledge. 
+This is a E-commarce website to demonstrate my js knowledge. 
